@@ -1,0 +1,52 @@
+﻿<center><h1 style="color: #ff7777;">Company Dependent</h1></center>
+<p></p>
+<center>
+    <form action="/Dependent/SaveDependData" style="background-color: #ffe6f7; padding: 20px; border-radius: 10px; width: 50%; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);">
+        <div class="form-row">
+            <div class="form-group col-md-6">
+                <label for="Name" style="color: #ffaaaaff;">Dependent Name</label>
+                <input type="text" class="form-control" name="Name" id="Name" placeholder="Name" style="border-color: #ff7777;">
+            </div>
+        </div>
+        <p></p>
+
+        <div class="form-row">
+            <div class="form-group col-md-6">
+                <label for="inputState" style="color: #ffaaaaff;">Employee Name</label>
+                <select id="inputState" name="ESSN" class="form-control" style="border-color: #ff7777;">
+                    @foreach (Employee item in ViewBag.depend)
+                    {
+                        <option value="@item.SSN">@item.FName</option>
+                    }
+                </select>
+            </div>
+        </div>
+        <p></p>
+
+        <div class="form-row">
+            <div class="form-group col-md-6">
+                <label for="Sex" style="color: #ffaaaaff;">Gender</label>
+                <input type="text" class="form-control" name="Sex" id="Sex" placeholder="Gender" style="border-color: #ff7777;">
+            </div>
+        </div>
+        <p></p>
+
+        <div class="form-row">
+            <div class="form-group col-md-6">
+                <label for="Date" style="color: #ffaaaaff;">Dependent Date</label>
+                <input type="text" class="form-control" name="Date" id="Date" placeholder="Dependent Date" style="border-color: #ff7777;">
+            </div>
+        </div>
+        <p></p>
+
+        <div class="form-row">
+            <div class="form-group col-md-6">
+                <label for="Relation" style="color: #ffaaaaff;">Dependent Relation</label>
+                <input type="text" class="form-control" name="Relation" id="Relation" placeholder="Dependent Relation" style="border-color: #ff7777;">
+            </div>
+        </div>
+        <p></p>
+
+        <button type="submit" class="btn btn-primary" style="background-color: #ff7777; border-color: #ffaaaaff;">Add</button>
+    </form>
+</center>

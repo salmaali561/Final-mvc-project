@@ -1,0 +1,36 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+@model List<Department>
+
+<table class="table" style="background-color: #ffe6f7; border-radius: 8px; width: 80%; margin: 0 auto; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);">
+    <thead style="background-color: #ffaaaaff; color: white;">
+        <tr>
+            <th scope="col" style="padding: 10px;">ID</th>
+            <th scope="col" style="padding: 10px;">Name</th>
+            <th scope="col" style="padding: 10px;">Manager Date</th>
+            <th scope="col" style="padding: 10px;">Manager ID</th>
+            <th scope="col" style="padding: 10px;">Delete</th>
+            <th scope="col" style="padding: 10px;">Update</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr style="background-color: #fff0f5;">
+                <th scope="row" style="padding: 10px; border-bottom: 1px solid #ffaaaaff;">@item.DNumber</th>
+                <td style="padding: 10px; border-bottom: 1px solid #ffaaaaff;">@item.DName</td>
+                <td style="padding: 10px; border-bottom: 1px solid #ffaaaaff;">@item.MgrDate</td>
+                <td style="padding: 10px; border-bottom: 1px solid #ffaaaaff;">@item.mgrSSN</td>
+                <td style="padding: 10px; border-bottom: 1px solid #ffaaaaff;">
+                    <a href="/Department/Delete/@item.DNumber" style="color: #ff7777; text-decoration: none; font-weight: bold;">Delete</a>
+                </td>
+                <td style="padding: 10px; border-bottom: 1px solid #ffaaaaff;">
+                    <a href="/Department/DepartmentEditForm/@item.DNumber" style="color: #ff77aa; text-decoration: none; font-weight: bold;">Update</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

@@ -1,0 +1,36 @@
+﻿@model Department
+
+<center>
+    <form action="/Department/SaveDepartmentEdit" style="background-color: #ffe6f7; padding: 20px; border-radius: 10px; width: 50%; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);">
+        <div class="form-row">
+            <div class="form-group col-md-6">
+                <input class="form-control" asp-for="DNumber" hidden>
+            </div>
+            <p></p>
+            <div class="form-group col-md-6">
+                <label style="color: #ff77aa;">Department Name</label>
+                <input class="form-control" asp-for="DName" placeholder="Enter department name" style="border-color: #ff77aa; background-color: #fff0f5;">
+            </div>
+            <p></p>
+            <div class="form-group col-md-6">
+                <label style="color: #ff77aa;">Manager Date</label>
+                <input class="form-control" asp-for="MgrDate" placeholder="Enter Manager Date" style="border-color: #ff77aa; background-color: #fff0f5;">
+            </div>
+        </div>
+
+        <div class="form-row">
+            <div class="form-group col-md-6">
+                <p></p>
+                <label for="inputState" style="color: #ff77aa;">Manager</label>
+                <select asp-for="mgrSSN" class="form-control" style="border-color: #ff77aa; background-color: #fff0f5;">
+                    @foreach (Employee item in ViewBag.Employees)
+                    {
+                        <option value="@item.SSN">@item.FName @item.LName</option>
+                    }
+                </select>
+            </div>
+        </div>
+        <p></p>
+        <button type="submit" class="btn btn-primary" style="background-color: #ff77aa; border-color: #ff77aa;">Update</button>
+    </form>
+</center>

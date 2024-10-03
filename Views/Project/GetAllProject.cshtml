@@ -1,0 +1,68 @@
+﻿@model List<Project>
+
+<style>
+    body {
+        background-color: #f9f0f3; /* Light pink background for the body */
+        font-family: Arial, sans-serif; /* Consistent font style */
+    }
+
+    .table {
+        margin: 20px auto; /* Center the table */
+        width: 80%; /* Set table width */
+        background-color: #ffffff; /* White background for the table */
+        border-radius: 10px; /* Rounded corners */
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Soft shadow */
+    }
+
+    .table th, .table td {
+        text-align: center; /* Center the text in the table */
+    }
+
+    .table th {
+        background-color: #d63384; /* Pink header background */
+        color: white; /* White text for headers */
+    }
+
+    .table tr:hover {
+        background-color: #ff80b8; /* Lighter pink on row hover */
+    }
+
+    .table a {
+        color: #d63384; /* Pink color for links */
+        text-decoration: none; /* Remove underline from links */
+    }
+
+    .table a:hover {
+        text-decoration: underline; /* Underline on hover for links */
+    }
+
+    .table td {
+        padding: 10px; /* Padding for table cells */
+    }
+</style>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th scope="col">ID</th>
+            <th scope="col">Name</th>
+            <th scope="col">Location</th>
+            <th scope="col">Department Name</th>
+            <th scope="col">Delete</th>
+            <th scope="col">Update</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <th scope="row">@item.PNum</th>
+                <td>@item.PName</td>
+                <td>@item.Plocation</td>
+                <td>@item.department.DName</td>
+                <td><a href="/Project/Delete/@item.PNum">Delete</a></td>
+                <td><a href="/Project/ProjectEditForm/@item.PNum">Update</a></td>
+            </tr>
+        }
+    </tbody>
+</table>

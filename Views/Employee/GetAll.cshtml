@@ -1,0 +1,69 @@
+﻿@model List<Employee>
+
+<style>
+    body {
+        background-color: #f9f0f3; /* Light pink background */
+    }
+
+    .table {
+        background-color: #ffffff; /* White background for the table */
+        border-radius: 10px; /* Rounded corners for the table */
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1); /* Soft shadow */
+        margin: 20px;
+    }
+
+    th, td {
+        text-align: center; /* Center align text in the table */
+    }
+
+    th {
+        background-color: #d63384; /* Pink background for the header */
+        color: white; /* White text for the header */
+    }
+
+    td {
+        color: #333; /* Darker text for the table cells */
+    }
+
+    a {
+        color: #d63384; /* Pink color for links */
+        text-decoration: none; /* Remove underline from links */
+    }
+
+    a:hover {
+        text-decoration: underline; /* Underline on hover */
+        color: #ff80b8; /* Lighter pink on hover */
+    }
+
+    .table tbody tr:hover {
+        background-color: #f2d4e8; /* Light pink background on row hover */
+    }
+</style>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th scope="col">ID</th>
+            <th scope="col">First Name</th>
+            <th scope="col">Last Name</th>
+            <th scope="col">Gender</th>
+            <th scope="col">Address</th>
+            <th scope="col">Delete</th>
+            <th scope="col">Update</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <th scope="row">@item.SSN</th>
+                <td>@item.FName</td>
+                <td>@item.LName</td>
+                <td>@item.Sex</td>
+                <td>@item.Address</td>
+                <td><a href="/Employee/Delete/@item.SSN">Delete</a></td>
+                <td><a href="/Employee/EmpEditForm/@item.SSN">Update</a></td>
+            </tr>
+        }
+    </tbody>
+</table>

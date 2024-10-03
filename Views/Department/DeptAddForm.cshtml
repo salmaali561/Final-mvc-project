@@ -1,0 +1,33 @@
+﻿<center>
+    <h1 style="color: #ff77aa;">Company Department</h1>
+</center>
+<p></p>
+<center>
+    <form action="/Department/SaveFormData" style="background-color: #ffe6f7; padding: 20px; border-radius: 10px; width: 50%; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);">
+        <div class="form-row">
+            <div class="form-group col-md-6">
+                <label for="inputEmail4" style="color: #ff77aa;">Department Name</label>
+                <input type="text" class="form-control" Name="DName" id="name" placeholder="Enter department name" style="border-color: #ff77aa; background-color: #fff0f5;">
+            </div>
+            <p></p>
+            <div class="form-group col-md-6">
+                <label style="color: #ff77aa;">Manager Date</label>
+                <input type="text" class="form-control" id="ManagerDate" name="MgrDate" placeholder="Enter manager date" style="border-color: #ff77aa; background-color: #fff0f5;">
+            </div>
+        </div>
+        <p></p>
+        <div class="form-row">
+            <div class="form-group col-md-6">
+                <label for="inputState" style="color: #ff77aa;">Manager Name</label>
+                <select id="inputState" name="mgrSSN" class="form-control" style="border-color: #ff77aa; background-color: #fff0f5;">
+                    @foreach (Employee item in ViewBag.Dept)
+                    {
+                        <option value="@item.SSN">@item.FName</option>
+                    }
+                </select>
+            </div>
+        </div>
+        <p></p>
+        <button type="submit" class="btn btn-primary" style="background-color: #ff77aa; border-color: #ff77aa;">Add</button>
+    </form>
+</center>

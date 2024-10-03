@@ -1,0 +1,139 @@
+﻿@using MVC_Task2.View_Model;
+@model Employee
+
+<style>
+    body {
+        background-color: #f9f0f3; 
+    }
+
+    .form-container {
+        background-color: #ffffff; 
+        border-radius: 10px; 
+        padding: 20px;
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1); 
+        margin: 20px;
+    }
+
+    .form-label {
+        color: #d63384; /
+        font-weight: bold;
+    }
+
+    .form-control {
+        border: 2px solid #d63384; /* Pink border for input fields */
+        border-radius: 5px; /* Slightly rounded corners for inputs */
+    }
+
+    .form-control:focus {
+        border-color: #ff80b8; /* Lighter pink on focus */
+        box-shadow: 0 0 5px rgba(214, 51, 132, 0.5); /* Focus effect */
+    }
+
+    .btn-primary {
+        background-color: #d63384; /* Pink background for buttons */
+        border-color: #d63384; 
+    }
+
+    .btn-primary:hover {
+        background-color: #ff80b8; 
+        border-color: #ff80b8; 
+    }
+
+    h1 {
+        color: #d63384; 
+    }
+</style>
+
+<center>
+    <h1>ITI Employee</h1>
+</center>
+
+<center>
+    <div class="form-container">
+        <form asp-action="SaveEmployeeEdit" asp-controller="Employee">
+            <div class="form-row">
+                <div class="form-group col-md-6">
+                    <label class="form-label" for="inputEmail4">ID</label>
+                    <input class="form-control" asp-for="SSN" placeholder="SSN" readonly>
+                    <span asp-validation-for="SSN" class="text-danger"></span>
+                </div>
+                <div class="form-group col-md-6">
+                    <label class="form-label">First Name</label>
+                    <input class="form-control" asp-for="FName" placeholder="First Name">
+                    <span asp-validation-for="FName" class="text-danger"></span>
+                </div>
+            </div>
+
+            <div class="form-group col-md-6">
+                <label class="form-label" for="inputAddress">Last Name</label>
+                <input class="form-control" asp-for="LName" placeholder="Last Name">
+                <span asp-validation-for="LName" class="text-danger"></span>
+            </div>
+
+            <div class="form-group col-md-6">
+                <label class="form-label" for="inputAddress">Minit</label>
+                <input class="form-control" asp-for="Minit" placeholder="Minit">
+                <span asp-validation-for="Minit" class="text-danger"></span>
+            </div>
+
+            <div class="form-group col-md-6">
+                <label class="form-label" for="inputAddress">Birth Date</label>
+                <input class="form-control" asp-for="BDate" placeholder="Birth Date">
+                <span asp-validation-for="BDate" class="text-danger"></span>
+            </div>
+
+            <div class="form-group col-md-6">
+                <label class="form-label" for="inputAddress">Address</label>
+                <input class="form-control" asp-for="Address" placeholder="Address">
+                <span asp-validation-for="Address" class="text-danger"></span>
+            </div>
+
+            <div class="form-group col-md-6">
+                <label class="form-label" for="inputAddress">Gender</label>
+                <input class="form-control" asp-for="Sex" placeholder="Gender">
+                <span asp-validation-for="Sex" class="text-danger"></span>
+            </div>
+
+            <div class="form-group col-md-6">
+                <label class="form-label" for="inputAddress">Salary</label>
+                <input class="form-control" asp-for="Salary" placeholder="Salary">
+                <span asp-validation-for="Salary" class="text-danger"></span>
+            </div>
+
+            <div class="form-group col-md-6">
+                <label class="form-label" for="inputAddress">Supervisor ID</label>
+                <input class="form-control" asp-for="superSSN" placeholder="Supervisor ID">
+                <span asp-validation-for="superSSN" class="text-danger"></span>
+            </div>
+
+            <div class="form-group col-md-6">
+                <label class="form-label" for="inputAddress">Department Number</label>
+                <input class="form-control" asp-for="Dnum" placeholder="Department Number">
+                <span asp-validation-for="Dnum" class="text-danger"></span>
+            </div>
+
+            <div class="form-row">
+                <div class="form-group col-md-6">
+                    <label class="form-label" for="inputState">Supervisor</label>
+                    <select asp-for="superSSN" class="form-control">
+                        @foreach (Employee item in ViewBag.depts.Employees)
+                        {
+                            <option value="@item.SSN">@item.FName</option>
+                        }
+                    </select>
+                </div>
+                <div class="form-group col-md-6">
+                    <label class="form-label" for="inputState">Department</label>
+                    <select asp-for="Dnum" class="form-control">
+                        @foreach (Department item in ViewBag.depts.Departments)
+                        {
+                            <option value="@item.DNumber">@item.DName</option>
+                        }
+                    </select>
+                </div>
+            </div>
+
+            <button type="submit" class="btn btn-primary">Update</button>
+        </form>
+    </div>
+</center>

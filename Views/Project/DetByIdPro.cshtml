@@ -1,0 +1,49 @@
+﻿@model Project
+
+<style>
+    body {
+        background-color: #f9f0f3; 
+        font-family: Arial, sans-serif; 
+    }
+
+    .card {
+        width: 18rem; 
+        margin: 20px; /* Margin around the card */
+        border-radius: 10px; /* Rounded corners */
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* Soft shadow */
+        transition: transform 0.2s; /* Smooth transition for hover effect */
+    }
+
+        .card:hover {
+            transform: translateY(-5px); 
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3); 
+        }
+
+    .card-body {
+        background-color: #ffffff; 
+        border: 1px solid #d63384; 
+        border-radius: 10px; 
+        padding: 15px; 
+    }
+
+    .card-title {
+        color: #d63384; 
+    }
+
+    .card-subtitle {
+        color: #6c757d; 
+    }
+
+    .card-text {
+        color: #333; 
+    }
+</style>
+
+<div class="card">
+    <div class="card-body">
+        <h5 class="card-title">@Model.PNum</h5>
+        <h6 class="card-subtitle mb-2">@Model.PName</h6>
+        <p class="card-text">Location: @Model.Plocation</p>
+        <p class="card-text">Department: @Model.department.DName</p>
+    </div>
+</div>

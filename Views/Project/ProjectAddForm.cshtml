@@ -1,0 +1,77 @@
+﻿@model Project
+
+<style>
+    body {
+        background-color: #f9f0f3; 
+        font-family: Arial, sans-serif;
+    }
+
+    .form-container {
+        background-color: #ffffff; 
+        border-radius: 10px; 
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); 
+        padding: 20px; 
+        margin: 20px auto; 
+        max-width: 600px; 
+    }
+
+    h1 {
+        color: #d63384; 
+        text-align: center; 
+    }
+
+    .form-group label {
+        color: #d63384; /* Pink color for labels */
+    }
+
+    .btn-primary {
+        background-color: #d63384; 
+        border-color: #d63384; 
+    }
+
+        .btn-primary:hover {
+            background-color: #ff80b8; 
+            border-color: #ff80b8; 
+        }
+
+    .text-danger {
+        margin-top: 5px; /* Spacing for validation messages */
+    }
+</style>
+
+<div class="form-container">
+    <h1>ITI Project</h1>
+    <form asp-action="SaveFormDataproject" asp-controller="Project">
+        <div asp-validation-summary="All" class="text-danger"></div>
+        <div class="form-row">
+            <div class="form-group col-md-6">
+                <label asp-for="PNum">Project Number</label>
+                <input class="form-control" asp-for="PNum" placeholder="number">
+                <span asp-validation-for="PNum" class="text-danger"></span>
+            </div>
+            <div class="form-group col-md-6">
+                <label asp-for="PName">Project Name</label>
+                <input class="form-control" asp-for="PName" placeholder="name">
+                <span asp-validation-for="PName" class="text-danger"></span>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label asp-for="Plocation">Project Location</label>
+            <input class="form-control" asp-for="Plocation" placeholder="1234 Main St">
+            <span asp-validation-for="Plocation" class="text-danger"></span>
+        </div>
+
+        <div class="form-group">
+            <label for="inputState">Department Name</label>
+            <select id="inputState" asp-for="Dnum" class="form-control">
+                @foreach (Department item in ViewBag.depts)
+                {
+                    <option value="@item.DNumber">@item.DName</option>
+                }
+            </select>
+        </div>
+
+        <button type="submit" class="btn btn-primary">Add</button>
+    </form>
+</div>

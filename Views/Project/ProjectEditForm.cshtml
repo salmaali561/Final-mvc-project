@@ -1,0 +1,61 @@
+﻿@model Project
+
+<style>
+    body {
+        background-color: #f9f0f3; /* Light pink background for the body */
+    }
+
+    .form-container {
+        background-color: #ffffff; /* White background for the form */
+        border-radius: 10px; /* Rounded corners for the form */
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Soft shadow */
+        padding: 20px; /* Padding for the form */
+        margin: 20px auto; /* Center the form */
+        max-width: 600px; /* Maximum width for the form */
+    }
+
+    .form-group label {
+        color: #d63384; /* Pink color for labels */
+    }
+
+    .btn-primary {
+        background-color: #d63384; /* Pink button color */
+        border-color: #d63384; /* Match button border with color */
+    }
+
+        .btn-primary:hover {
+            background-color: #ff80b8; /* Lighter pink on hover */
+            border-color: #ff80b8; /* Match border on hover */
+        }
+</style>
+
+<div class="form-container">
+    <form action="/Project/SaveProjectEdit">
+        <input class="form-control" asp-for="PNum" hidden>
+        <div class="form-row">
+            <div class="form-group col-md-6">
+                <label>Project Name</label>
+                <input class="form-control" asp-for="PName" placeholder="Enter project name">
+            </div>
+
+            <div class="form-group col-md-6">
+                <label>Project Location</label>
+                <input class="form-control" asp-for="Plocation" placeholder="Enter location name">
+            </div>
+        </div>
+
+        <div class="form-row">
+            <div class="form-group col-md-12">
+                <label for="inputState">Department</label>
+                <select asp-for="Dnum" class="form-control">
+                    @foreach (Department item in ViewBag.depts)
+                    {
+                        <option value="@item.DNumber">@item.DName</option>
+                    }
+                </select>
+            </div>
+        </div>
+
+        <button type="submit" class="btn btn-primary">Edit</button>
+    </form>
+</div>

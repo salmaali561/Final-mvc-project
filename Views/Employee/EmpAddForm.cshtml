@@ -1,0 +1,124 @@
+﻿@using MVC_Task2.View_Model;
+@model Employee
+
+<style>
+    body {
+        background-color: #ffe6f7; 
+    }
+
+    h1 {
+        color: #ff7777; 
+        text-align: center;
+        margin-bottom: 20px; 
+    }
+
+    .form-control {
+        border-radius: 5px; 
+    }
+
+    .form-group {
+        margin-bottom: 15px; 
+    }
+
+    .btn-primary {
+        background-color: #ff7777; 
+        border: none;
+    }
+
+        .btn-primary:hover {
+            background-color: #ff5555; 
+        }
+
+    .text-danger {
+        font-size: 0.9rem;
+    }
+</style>
+
+<center>
+    <h1>Company Employee</h1>
+    <form asp-action="SaveFormDataEmp" asp-controller="Employee">
+        <div class="form-row">
+            <div class="form-group col-md-6">
+                <label for="SSN">ID</label>
+                <input class="form-control" asp-for="SSN" placeholder="SSN" />
+                <span asp-validation-for="SSN" class="text-danger"></span>
+            </div>
+            <div class="form-group col-md-6">
+                <label>First Name</label>
+                <input class="form-control" asp-for="FName" placeholder="First Name" />
+                <span asp-validation-for="FName" class="text-danger"></span>
+            </div>
+        </div>
+
+        <div class="form-group col-md-6">
+            <label for="LName">Last Name</label>
+            <input class="form-control" asp-for="LName" placeholder="Last Name" />
+            <span asp-validation-for="LName" class="text-danger"></span>
+        </div>
+
+        <div class="form-group col-md-6">
+            <label for="Minit">Minit</label>
+            <input class="form-control" asp-for="Minit" placeholder="Minit" />
+            <span asp-validation-for="Minit" class="text-danger"></span>
+        </div>
+
+        <div class="form-group col-md-6">
+            <label for="BDate">Birth Date</label>
+            <input type="date" class="form-control" asp-for="BDate" placeholder="Birth Date" />
+            <span asp-validation-for="BDate" class="text-danger"></span>
+        </div>
+
+        <div class="form-group col-md-6">
+            <label for="Address">Address</label>
+            <input class="form-control" asp-for="Address" placeholder="Address" />
+            <span asp-validation-for="Address" class="text-danger"></span>
+        </div>
+
+        <div class="form-group col-md-6">
+            <label for="Sex">Gender</label>
+            <input class="form-control" asp-for="Sex" placeholder="Gender" />
+            <span asp-validation-for="Sex" class="text-danger"></span>
+        </div>
+
+        <div class="form-group col-md-6">
+            <label for="Salary">Salary</label>
+            <input class="form-control" asp-for="Salary" placeholder="Salary" />
+            <span asp-validation-for="Salary" class="text-danger"></span>
+        </div>
+
+        <div class="form-group col-md-6">
+            <label for="superSSN">Supervisor ID</label>
+            <input class="form-control" asp-for="superSSN" placeholder="Supervisor ID" />
+            <span asp-validation-for="superSSN" class="text-danger"></span>
+        </div>
+
+        <div class="form-group col-md-6">
+            <label for="Dnum">Department Number</label>
+            <input class="form-control" asp-for="Dnum" placeholder="Department Number" />
+            <span asp-validation-for="Dnum" class="text-danger"></span>
+        </div>
+
+        <div class="form-row">
+            <div class="form-group col-md-6">
+                <label for="superSSN">Supervisor</label>
+                <select asp-for="superSSN" class="form-control">
+                    @foreach (Employee item in ViewBag.emp.Employees)
+                    {
+                        <option value="@item.SSN">@item.FName</option>
+                    }
+                </select>
+            </div>
+            <div class="form-group col-md-6">
+                <label for="Dnum">Department</label>
+                <select asp-for="Dnum" class="form-control">
+                    @foreach (Department item in ViewBag.emp.Departments)
+                    {
+                        <option value="@item.DNumber">@item.DName</option>
+                    }
+                </select>
+            </div>
+        </div>
+
+        <button type="submit" class="btn btn-primary">Add</button>
+    </form>
+</center>
